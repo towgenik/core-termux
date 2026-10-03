@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 # Core - multiplatform entrypoint.
-# #!/usr/bin/env bash works on Termux, Ubuntu Linux and Ubuntu (WSL).
+#
+# NOTE: `#!/usr/bin/env bash` does NOT work on Termux. Android has no /usr/bin,
+# so the kernel cannot resolve the interpreter and exec fails with ENOENT.
+# The Termux installer therefore installs a wrapper that runs this file through
+# bash explicitly (see install.sh: link_binary). Do not rely on this shebang on
+# Termux -- invoke it as `bash core/bin/core` there.
 
 SOURCE="${BASH_SOURCE[0]}"
 
